@@ -187,6 +187,11 @@ public class PlayerActivity extends AppCompatActivity
     playerView.setControllerVisibilityListener(this);
     playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
     playerView.requestFocus();
+    playerView.setControllerAutoShow(true);
+    playerView.getVideoSurfaceView().setOnLongClickListener(v -> {
+      Toast.makeText(playerView.getContext(), "Long Click Detected", Toast.LENGTH_LONG).show();
+      return true;
+    });
     if (sphericalStereoMode != null) {
       int stereoMode;
       if (SPHERICAL_STEREO_MODE_MONO.equals(sphericalStereoMode)) {
